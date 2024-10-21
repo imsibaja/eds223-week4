@@ -1,0 +1,36 @@
+---
+title: "EDS 223: Week 4"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+install.packages("geodata")
+install.packages("spDataLarge", repos = "https://nowosad.github.io/drat/", type = "source")
+library(terra) #raster
+library(tidyverse)
+library(tmap)
+library(kableExtra)
+library(spData)
+library(spDataLarge)
+library(geodata)
+```
+
+
+```{r}
+zion_elevation <- rast(system.file("raster/srtm.tif", # tells r where raster is in file
+                                                      # structure
+                                   package = "spDataLarge")) 
+
+zion_land <- rast(system.file("raster/nlcd.tif", package = "spDataLarge")) 
+```
+
+```{r}
+tm_shape(zion_elevation) +
+  tm_raster(title = "Elevation (m")
+
+tm_shape(zion_elevation) +
+  tm_raster(title = "Land Cover (m)")
+```
+
